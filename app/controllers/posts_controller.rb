@@ -4,12 +4,8 @@ class PostsController < ApplicationController
     @posts = Post.order(id: "DESC")
   end
 
-    # コメントアウトする
-    # def new
-    # end
-
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index  # 追記する
+    post = Post.create(content: params[:content])
+    render json:{ post: post }
   end
 end
